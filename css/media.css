@@ -1,0 +1,249 @@
+/* === DESKTOP FIRST === */
+
+/* xl <= Extra extra large (xxl) */
+@media (max-width : 1400px) {
+
+}
+
+/* lg <= Extra large (xl) */
+@media (max-width : 1200px) {
+
+}
+
+/* md <= Large (lg) */
+@media (max-width : 992px) {
+	section{
+		padding-top: 60px;
+	}
+	.section-title{
+		font-size: 26px;
+	}
+	.first_screen h1{
+		font-size: 2rem;
+	}
+	.first_screen{
+		min-height: 460px;
+		padding-top: 60px;
+	}
+	footer{
+		margin-top: 0;
+	}
+	.testimonials .swiper-slide{
+		padding: 15px;
+	}
+	.main_carousel .swiper-slide > div{
+		align-items: flex-start;
+		height: inherit;
+	}
+	.faq_item div{
+		padding-right: 26px;
+		font-size: 14px;
+		padding-top: 16px;
+		padding-bottom: 16px;
+	}
+	.faq_item p{
+		font-size: 14px;
+		margin-bottom: 16px;
+	}
+	.main_carousel.carousel .swiper-slide div img{
+		max-height: 124px;
+		height: 100%;
+	}
+	.services.main_carousel .swiper-slide img{
+		max-height: 240px;
+	}
+	.tariff_wrap p{
+		font-size: 14px;
+	}
+	.tariff_wrap p + p{
+		padding-top: 6px;
+	}
+	.tariff_wrap h3{
+		font-size: 16px;
+	}
+	.tariff_wrap h4{
+		margin-bottom: 14px;
+		font-size: 14px;
+	}
+	header{
+		padding: 10px 0;
+		position: fixed;
+		z-index: 3;
+		width: 100%;
+	}
+	.menu_button {
+    width: 28px;
+    height: 22px;
+    position: relative;
+    z-index: 99;
+    background: transparent;
+    border: none;
+}
+.menu_button:after, .menu_button:before, .menu_button span {
+	width: 100%;
+	height: 2px;
+	background: var(--text);
+	transition: all .3s ease;
+	border-radius: 3px;
+	left: 0;
+}
+.menu_button:after {
+	content: '';
+	position: absolute;
+	top: 0;
+}
+.menu_button:before {
+	content: '';
+	position: absolute;
+	bottom: 0;
+}
+.menu_button span {
+	position: absolute;
+	top: 10px;
+}
+.menu_button.active::before {
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+	-webkit-transition: .2s ease;
+	-o-transition: .2s ease;
+	transition: .2s ease;
+	bottom: 9px;
+}
+.menu_button.active span {
+	-webkit-transform: scale(0);
+	-ms-transform: scale(0);
+	transform: scale(0);
+	-webkit-transition: .2s ease;
+	-o-transition: .2s ease;
+	transition: .2s ease;
+}
+.menu_button.active::after {
+	width: 100%;
+	-webkit-transition: .2s ease;
+	-o-transition: .2s ease;
+	transition: .2s ease;
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	top: 10px;
+}
+aside.active {
+	opacity: 1;
+	visibility: visible;
+	overflow: scroll;
+}
+
+aside {
+	background: #fff;
+	position: fixed;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition: var(--transition);
+	padding-top: 120px;
+	padding-bottom: 30px;
+}
+.menu_toggle{
+	position: relative;
+	width: 100%;
+	margin-bottom: 14px;
+	border-bottom: 1px solid var(--gray);
+	padding: 10px 0;
+}
+.menu_toggle::after{
+	content: '';
+	width: 16px;
+	height: 2px;
+	background: var(--text);
+	position: absolute;
+	right: 6px;
+	bottom: 0;
+	top: 0;
+	margin: auto;
+}
+.menu_toggle::before{
+	content: '';
+	height: 16px;
+	width: 2px;
+	background: var(--text);
+	position: absolute;
+	right: 13px;
+	bottom: 0;
+	top: 0;
+	margin: auto;
+	transition: var(--transition);
+}
+.menu_toggle.active::before {
+	transform: rotate(90deg);
+	opacity: 0;
+}
+
+aside ul{
+	margin-bottom: 20px;
+	padding-left: 0;
+	list-style: none;
+}
+aside ul li{
+	width: 100%;
+}
+aside ul li + *{
+	margin-top: 6px;
+}
+aside ul li a{
+	color: var(--text);
+	text-decoration: none;
+	font-size: 14px;
+}
+}
+
+/* sm <= Medium (md) */
+@media (max-width : 768px) {
+
+}
+
+/* xs <= Small (sm) */
+@media (max-width : 576px) {
+
+}
+
+
+/* === MOBILE FIRST === */
+
+/* Custom (xs) */
+@media (min-width : 0) {
+
+}
+
+/* Small (sm) */
+@media (min-width : 576px) {
+
+}
+
+/* Medium (md) */
+@media (min-width : 768px) {
+
+}
+
+/* Large (lg) */
+@media (min-width : 992px) {
+
+}
+
+/* Extra large (xl) */
+@media (min-width : 1200px) {
+	.text {
+		font-size: 18px;
+	}
+}
+
+/* Extra extra large (xxl) */
+@media (min-width : 1400px) {
+	.text {
+		font-size: 22px;
+	}
+}

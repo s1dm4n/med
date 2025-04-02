@@ -1,0 +1,1 @@
+$result->execute((array)$parm)
