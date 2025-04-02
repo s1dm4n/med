@@ -13,7 +13,8 @@
 			<div class="col-lg-3">
 				<h4>Автомобили</h4>
 				<nav>
-					<?php 
+					<?php
+					 include "db.php";
 $category_query = "SELECT * FROM products WHERE product_cat = '6'";
 $run_query = mysqli_query($con, $category_query);
 if(mysqli_num_rows($run_query) > 0) {
