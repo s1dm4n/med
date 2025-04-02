@@ -1,6 +1,6 @@
 <?php
 //подключаюсь к базе shop_db, детали подключения в 
-$servername = "MySQL-5.7";
+$servername = "localhost";
 $username = "root";
 $password = "";
 $db = "shop_db";
