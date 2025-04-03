@@ -25,13 +25,13 @@ include "header.php";
 						</p>
 						<?php
 						// Здесь я вывожу единицу измерения позиции в зависимости от категории, 
-						if ($row['product_keywords'] == "Автомобили") {
+						if ($row['product_keywords'] == "Мед") {
 							// Если ключевые слова равны "Автомобили", то выводим цену за сутки
-							echo "<h4>от " . $row['product_price'] . "₽ / сутки</h4>";
-						} elseif ($row['product_keywords'] == "Товары") {
-							echo "<h4>" . $row['product_price'] . "₽ / за шт.</h4>";
-						} elseif ($row['product_keywords'] == "Услуги") {
-							echo "<h4>от " . $row['product_price'] . "₽ / за услугу.</h4>";
+							echo "<h4>" . $row['product_price'] . "₽</h4>";
+						} elseif ($row['product_keywords'] == "Продукты") {
+							echo "<h4>" . $row['product_price'] . "₽</h4>";
+						} elseif ($row['product_keywords'] == "Подарки") {
+							echo "<h4>" . $row['product_price'] . "₽</h4>";
 						}
 						// Здесь я вывожу единицу измерения позиции в зависимости от категории, на кнопке "Заказать" тоже можно учесть такой функционал
 						?>

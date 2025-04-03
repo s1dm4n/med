@@ -15,7 +15,7 @@ include "topheader.php";
          <div class="col-md-6">
             <div class="card">
               <div class="card-header card-header-primary">
-                <h4 class="card-title"> Категории(основные категории товаров, автомобилей или услуг)</h4>
+                <h4 class="card-title"> Категории</h4>
                 
               </div>
               <div class="card-body">
@@ -58,7 +58,7 @@ include "topheader.php";
           <div class="col-md-6">
             <div class="card">
               <div class="card-header card-header-primary">
-                <h4 class="card-title"> Дополнительные рубрики(марки авто, категория услуг, категория товаров)</h4>
+                <h4 class="card-title"> Дополнительные рубрики</h4>
                 
               </div>
               <div class="card-body">

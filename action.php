@@ -80,7 +80,7 @@ if(isset($_POST["getProduct"])){
 							 <div class='product_item'>
 							 	<img src='product_images/$pro_image' alt=''>
 								<h5 class='mt-3'>$pro_title</h5>
-								<div class='text'>$pro_price руб.</div>
+								<div class='text'>$pro_price ₽</div>
 
 								 <div class='add-to-cart mt-3'>
 									 <button pid='$pro_id' id='product' class='add-to-cart-btn block2-btn-towishlist btn' href='#'><i class='fa fa-shopping-cart'></i>В корзину</button>

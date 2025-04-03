@@ -1,13 +1,13 @@
 /* USER VARIABLES SECTION */
 
 :root {
-	--accent: #FFC191;
+	--accent: #f59d2f;
 	--text: #333;
-	--blue: #F3FAFF;
+	--blue: #fffcf8;
 	--gray: #F8F8F8;
 	--regular-text: 18px;
 	--lineheight: 1.65;
-	--userfont: roboto-st, sans-serif;
+	--userfont: "Geologica", sans-serif;
 	--systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
 	--transition: 0.2s ease all;
 }
@@ -20,12 +20,9 @@
 
 /* FONTS LOAD SECTION */
 
-@font-face { src: url("fonts/roboto-regular-webfont.woff2") format("woff2"); font-family: "roboto-st"; font-weight: 400; font-style: normal; }
-@font-face { src: url("fonts/roboto-italic-webfont.woff2") format("woff2"); font-family: "roboto-st"; font-weight: 400; font-style: italic; }
-@font-face { src: url("fonts/roboto-bold-webfont.woff2") format("woff2"); font-family: "roboto-st"; font-weight: 700; font-style: normal; }
-@font-face { src: url("fonts/roboto-bolditalic-webfont.woff2") format("woff2"); font-family: "roboto-st"; font-weight: 700; font-style: italic; }
-
 /* GENERAL CSS SETTINGS */
+
+
 
 ::placeholder { color: #666; }
 ::selection { background-color: var(--accent); color: #fff; }
@@ -60,7 +57,7 @@ body {
 }
 .product_item img {
 	height: 300px;
-	object-fit: cover;
+	object-fit: contain !important;
 	width: 100%;
 }
 .h-100{
@@ -100,7 +97,19 @@ h1,h2,h3,h4,h5,.one,.two,.three,.four,.five{
 	background: var(--accent);
 	color: #fff;
 	text-decoration: none;
+	transition: all .3s;
 }
+
+.btn:hover {
+	color: #fff;
+	background: #d57600;	
+	transform: scale(1.05);
+}
+
+a:hover {
+	color: #d57600;
+}
+
 .prev_btn, .next_btn {
 	width: 56px;
 	height: 56px;
@@ -111,6 +120,12 @@ h1,h2,h3,h4,h5,.one,.two,.three,.four,.five{
 	border: 1px solid rgba(29, 29, 27, 0.08);
 	transition: var(--transition);
 }
+
+header ul path {
+	fill: currentColor;
+}
+
+
 body .btn-group * {
 	margin-left: 12px;
 }
@@ -147,10 +162,12 @@ section{
 header{
 	background: #fff;
 	padding: 10px 20px;
+	background: #ffecd4;
 }
 header .logo img{
 	max-width: 150px;
 }
+
 header nav ul{
 	list-style: none;
 	padding-left: 0;
@@ -158,13 +175,14 @@ header nav ul{
 	display: flex;
 	align-items: center;
 	margin: 0 20px;
+	gap: 4px
 }
 header nav ul li a{
 	display: flex;
 	flex-flow: column;
 	align-items: center;
 	text-decoration: none;
-	color: var(--text);
+	color: #663a03;
 }
 header nav ul li + li{
 	margin-left: 20px;
@@ -183,7 +201,17 @@ header .form-control{
 	min-width: 280px;
 	margin-left: 20px;
 	height: 42px;
+	border-radius: 10px 0 0 10px;
 }
+
+header .form-control::placeholder {
+	color: #cccccc;
+}
+
+.form-control button {
+	border-radius: 0 10px 10px 0;
+}
+
 /* first_screen */
 .first_screen{
 	position: relative;
@@ -205,15 +233,15 @@ header .form-control{
 .first_screen h1{
 	font-size: 3rem;
 }
-.services.main_carousel .swiper-slide img{
-	height: 300px;
-}
+
 .main_carousel .swiper-slide > div{
 	display: flex;
 	flex-flow: column;
 	align-items: center;
 	text-decoration: none;
 	color: var(--text);
+	border-radius: 20px;
+	object-fit: cover;
 }
 .main_carousel .swiper-slide div img{
 	width: 100%;
@@ -229,9 +257,13 @@ header .form-control{
 .product_item{
 	position: relative;
 	transition: var(--transition);
+	border-radius: 20px;
+	object-fit: cover;
 }
 .product_item img{
 	width: 100%;
+	border-radius: 20px;
+	object-fit: cover;
 }
 .product_item:hover .hover_block{
 	opacity: 1;
@@ -254,6 +286,7 @@ header .form-control{
 	transition: var(--transition);
 	opacity: 0;
 	visibility: hidden;
+	border-radius: 20px;
 }
 /* testimonials */
 .testimonials .swiper-slide img{
@@ -268,6 +301,8 @@ header .form-control{
 	display: flex;
     flex-flow: column;
     height: initial;
+	border-radius: 20px;
+	background: #ffd7a6;
 }
 .testimonials .swiper-slide p{
 	margin-bottom: 0;
@@ -324,6 +359,8 @@ header .form-control{
 	background: var(--gray);
 	padding: 30px;
 	height: 100%;
+	background: #fff4e6;
+    border-radius: 40px;
 }
 .tariff_wrap h4{
 	font-size: 20px;
@@ -381,9 +418,23 @@ footer nav ul li{
 	object-fit: contain;
 	width: 100%;
 }
-.product_carousel .swiper-slide img{
-	height: 400px !important;
+
+.cart img {
+	height: 165px !important;
+    width: 215px !important;
+    object-fit: cover;
+	border-radius: 20px;
 }
+
+.about-text, .about-worker {
+	margin-bottom: 178px;
+}
+
+iframe {
+	border-radius: 30px !important;
+	overflow: hidden;
+}
+
 .item_desc{
 	overflow: hidden;
 	display: -webkit-box;
@@ -396,4 +447,22 @@ footer nav ul li{
 .link{
 	color: var(--text);
 	text-decoration: none;
+}
+
+.tariff img {
+	width: 300px;
+    object-fit: cover;
+    height: 300px;
+    object-position: top;
+	border-radius: 30px;
+	margin-bottom: 24px;
+}
+
+.tariff span {
+    color: #898989;
+    font-size: 20px;
+}
+
+.tariff h3 {
+	margin-top: 12px;
 }

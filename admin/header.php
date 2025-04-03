@@ -1,6 +1,6 @@
 <head>
 
- <title>Cruton - панель администратора</title>
+ <title>Здоровый Мед - панель администратора</title>
   
 
   <meta content="" name="descriptison">
@@ -29,6 +29,8 @@
   <link href="../assets/css/style.css" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="../assets/css/jquery-te-1.4.0.css">
   
+  <link href="../css/main.css" rel="stylesheet">
+
   <script src="../assets/vendor/jquery/jquery.min.js"></script>
   <script src="../assets/DataTables/datatables.min.js"></script>
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -48,10 +50,10 @@
   <script src="../assets/js/main.js"></script>
 	<style>
 	.navbar{
-		background-color: #FFC191 !important;
+		background-color: #f59d2f !important;
 	}
 	#sidebar{
-		background-color: #F3FAFF !important;
+		background-color:rgb(255, 255, 255) !important;
 	}
 </style>
 </head>

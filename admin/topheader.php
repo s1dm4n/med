@@ -2,10 +2,10 @@
   <div class="container-fluid mt-2 ">
     <div class="col-lg-12">
       <div class="col-md-4 float-left">
-        <h4 class="text-white">Cruton - Панель администратора</h4>
+        <h4 class="text-white" style="white-space: nowrap;">Панель администратора</h4>
       </div>
       <div class="col-md-2 float-right">
-        <a href="logout.php" class=" text-white">Выйти</i></a>
+        <a href="logout.php" class=" text-white" >Выйти</i></a>
       </div>
     </div>
   </div>

@@ -11,12 +11,12 @@ include '../header.php';
 		</div>
 		<div class="row gy-4 align-items-center mt-1 mt-lg-5">
 			<div class="col-lg-4">
-				<div class="two">Работаем по всей Москве и области</div>
+				<div class="two">Работаем в Москве и Московской области</div>
 				<div class="three">
-					<a href="tel:88009903124" class="link">8 (800) 990-31-24</a>
+					<a href="tel:89999999999" class="link">8 (999) 999-99-99</a>
 				</div>
 				<div class="three">
-					<a href="tel:88009903124" class="link">support@cruton.ru</a>
+					<a href="email:support@zdravmed.ru" class="link">support@zdravmed.ru</a>
 				</div>
 				<div class="three">
 				Круглосуточно 24/7

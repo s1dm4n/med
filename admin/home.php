@@ -4,6 +4,7 @@
 		<div class="ml-4 card card-stats col-md-5 bg-info">
 			<!-- Card body -->
 			<div class="card-body">
+			<a href="/admin/index.php?page=maintenance">
 				<div class="row">
 					<div class="col">
 						<h5 class="card-title text-uppercase text-white mb-0">Категории</h5>
@@ -17,12 +18,13 @@
 						</div>
 					</div>
 				</div>
-				<span class='stat-icons'><i class="fa fa-list"></i></span>
+			</a>
 			</div>
 		</div>
 		<div class="ml-4 card card-stats col-md-5 bg-warning">
 			<!-- Card body -->
 			<div class="card-body">
+			<a href="/admin/index.php?page=maintenance">
 				<div class="row">
 					<div class="col">
 						<h5 class="card-title text-uppercase text-white mb-0">Дополнительные рубрики</h5>
@@ -36,7 +38,7 @@
 						</div>
 					</div>
 				</div>
-				<span class='stat-icons'><i class="fa fa-tags"></i></span>
+			</a>
 			</div>
 		</div>
 		<div class="ml-4 card card-stats col-md-5 bg-success mt-5">
@@ -55,8 +57,7 @@
 						</div>
 					</div>
 				</div>
-				<span class='stat-icons'><i class="fa fa-gears"></i></span>
-</a>
+			</a>
 		</div>
 	</div>
 </div>

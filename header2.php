@@ -1,5 +1,5 @@
 
- <title>Cruton - Панель администратора</title> 
+ <title>Здоровый Мед - Панель администратора</title> 
   
 
   <!-- Google Fonts -->
@@ -33,6 +33,6 @@
   <script src="assets//js/main.js"></script>
 <style>
 	.navbar{
-		background: #FFC191;
+		background:rgb(255, 255, 255);
 	}
 </style>

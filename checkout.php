@@ -237,7 +237,7 @@ span.price {
 				</table>
 				<hr>
 				
-				<h3>Итого<span class='price' style='color:black'><b>$total руб.</b></span></h3>";
+				<h3>Итого<span class='price' style='color:black'><b>$total ₽</b></span></h3>";
 					
 				}
 				?>
