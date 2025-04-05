@@ -13,7 +13,7 @@
         
             <a class="nav-item nav-productlist" href="index.php?page=productlist">
               <i class="fa fa-list nav-productlist"></i>
-              Каталог товаров, услуг, автомобилей
+              Каталог товаров, услуг
             </a>
             <a class="nav-item nav-orders" href="index.php?page=orders">
               <i class="fa fa-book"></i>

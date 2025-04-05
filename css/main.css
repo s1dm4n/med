@@ -1,4 +1,5 @@
 /* USER VARIABLES SECTION */
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap');
 
 :root {
 	--accent: #f59d2f;
@@ -183,6 +184,7 @@ header nav ul li a{
 	align-items: center;
 	text-decoration: none;
 	color: #663a03;
+	white-space: nowrap;
 }
 header nav ul li + li{
 	margin-left: 20px;
@@ -355,7 +357,7 @@ header .form-control::placeholder {
 .tariff{
 	height: 100%;
 }
-.tariff_wrap{
+.tariff_wrap {
 	background: var(--gray);
 	padding: 30px;
 	height: 100%;
@@ -417,6 +419,7 @@ footer nav ul li{
 .page_content img{
 	object-fit: contain;
 	width: 100%;
+	height: 40vh;
 }
 
 .cart img {
@@ -465,4 +468,87 @@ iframe {
 
 .tariff h3 {
 	margin-top: 12px;
+}
+
+.blog p {
+	font-weight: 400;
+	font-size: 20px;
+}
+
+.img-text {
+	display: flex;
+	gap: 24px;
+	margin-bottom: 32px;
+}
+
+.img-text img {
+	width: 542px;
+	object-fit: cover;
+	border-radius: 30px;
+}
+
+.blog .tariff img {
+	height: 220px;
+}
+
+.blog .tariff h3 {
+	color: #e47d06;
+}
+
+.blog a {
+	text-decoration: none;
+}
+
+.blog a .tariff_wrap {
+	color: #e47d06;
+	text-decoration: none;
+	transition: all 0.3s;
+	transform: scale(1);
+}
+
+.blog a:hover .tariff_wrap {
+	transform: scale(1.05);
+	background: #ffe8cb;
+}
+
+.blog .tariff span {
+	color: #c9a173;
+	white-space: nowrap;
+}
+
+.blog .ingr {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0 24px 24px 24px;
+}
+
+.blog .ingr span {
+	font-weight: 200;
+	color: #947a5b;
+}
+
+.blog .ingr-text {
+	font-size: 24px;
+	color: #7e5016;
+}
+
+.blog h1 {
+	margin-bottom: 48px;
+}
+
+.page .img-text img{
+	width: 100% !important;
+}
+
+.page .about-text {
+	margin: 0;
+}
+
+.page span, .page ol, .page ul {
+	font-size: 24px;
+}
+
+.page .title {
+	font-size: 32px;
 }

@@ -26,7 +26,6 @@ if (isset($_SESSION["uid"])) {
     }
     $ref = randomREF();
    
-    mysqli_query($con,"INSERT INTO orders (user_id, ref_id) VALUES ('$user_id', '$ref')");
 
 		$sql = "INSERT INTO `orders_info` 
 (`order_id`,`user_id`,`f_name`, `email`,`address`,`prod_count`,`total_amt`) 

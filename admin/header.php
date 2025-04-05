@@ -30,6 +30,7 @@
   <link type="text/css" rel="stylesheet" href="../assets/css/jquery-te-1.4.0.css">
   
   <link href="../css/main.css" rel="stylesheet">
+  <link rel="icon" href="../images/favicon.png">
 
   <script src="../assets/vendor/jquery/jquery.min.js"></script>
   <script src="../assets/DataTables/datatables.min.js"></script>

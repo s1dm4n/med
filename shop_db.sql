@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1
--- Время создания: Мар 28 2024 г., 22:48
--- Версия сервера: 10.4.32-MariaDB
--- Версия PHP: 8.2.12
+-- Хост: 127.0.0.1:3306
+-- Время создания: Апр 05 2025 г., 17:10
+-- Версия сервера: 8.0.30
+-- Версия PHP: 8.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,11 +36,11 @@ DELIMITER ;
 --
 
 CREATE TABLE `admin_info` (
-  `admin_id` int(10) NOT NULL,
+  `admin_id` int NOT NULL,
   `admin_name` varchar(100) NOT NULL,
   `username` varchar(300) NOT NULL,
   `password` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `admin_info`
@@ -56,22 +56,19 @@ INSERT INTO `admin_info` (`admin_id`, `admin_name`, `username`, `password`) VALU
 --
 
 CREATE TABLE `brands` (
-  `brand_id` int(100) NOT NULL,
+  `brand_id` int NOT NULL,
   `brand_title` mediumtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `brands`
 --
 
 INSERT INTO `brands` (`brand_id`, `brand_title`) VALUES
-(12, 'Nissan'),
-(13, 'Smart'),
-(14, 'Volkswagen'),
-(15, 'hyndai'),
-(16, 'Москвич'),
-(17, 'Дополнительные услуги'),
-(18, 'Товары');
+(12, 'Светлый мед'),
+(15, 'Темный мед'),
+(20, 'Подарочные надоборы'),
+(21, 'Продукция пчеловодства');
 
 -- --------------------------------------------------------
 
@@ -80,12 +77,12 @@ INSERT INTO `brands` (`brand_id`, `brand_title`) VALUES
 --
 
 CREATE TABLE `cart` (
-  `id` int(10) NOT NULL,
-  `p_id` int(10) NOT NULL,
+  `id` int NOT NULL,
+  `p_id` int NOT NULL,
   `ip_add` varchar(250) NOT NULL,
-  `user_id` int(10) DEFAULT NULL,
-  `qty` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `user_id` int DEFAULT NULL,
+  `qty` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `cart`
@@ -93,7 +90,7 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`id`, `p_id`, `ip_add`, `user_id`, `qty`) VALUES
 (1, 2, '::1', 0, 1),
-(30, 6, '::1', -1, 1);
+(33, 8, '::1', -1, 1);
 
 -- --------------------------------------------------------
 
@@ -102,18 +99,18 @@ INSERT INTO `cart` (`id`, `p_id`, `ip_add`, `user_id`, `qty`) VALUES
 --
 
 CREATE TABLE `categories` (
-  `cat_id` int(100) NOT NULL,
+  `cat_id` int NOT NULL,
   `cat_title` mediumtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `categories`
 --
 
 INSERT INTO `categories` (`cat_id`, `cat_title`) VALUES
-(6, 'Автомобили'),
-(7, 'Услуги'),
-(8, 'Товары');
+(6, 'Мед'),
+(7, 'Подарки'),
+(8, 'Продукты');
 
 -- --------------------------------------------------------
 
@@ -122,9 +119,9 @@ INSERT INTO `categories` (`cat_id`, `cat_title`) VALUES
 --
 
 CREATE TABLE `email_info` (
-  `email_id` int(100) NOT NULL,
+  `email_id` int NOT NULL,
   `email` mediumtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -133,11 +130,11 @@ CREATE TABLE `email_info` (
 --
 
 CREATE TABLE `logs` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `user_id` varchar(50) NOT NULL,
   `action` varchar(50) NOT NULL,
   `date` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -146,21 +143,24 @@ CREATE TABLE `logs` (
 --
 
 CREATE TABLE `orders` (
-  `order_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `qty` int(11) NOT NULL,
+  `order_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `qty` int NOT NULL,
   `ref_id` varchar(255) NOT NULL,
   `p_status` varchar(20) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '0=canelled, 1= pending, 2 =  shipping, 3 =  delivered'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0=canelled, 1= pending, 2 =  shipping, 3 =  delivered'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `orders`
 --
 
 INSERT INTO `orders` (`order_id`, `user_id`, `product_id`, `qty`, `ref_id`, `p_status`, `status`) VALUES
-(1, 23, 0, 0, '5BwxiHOKU7', '', 1);
+(1, 23, 0, 0, '5BwxiHOKU7', '', 1),
+(2, 23, 0, 0, '5BwxiHOKU7', '', 1),
+(3, 15, 0, 0, 'Lw4NNQNpo0', '', 1),
+(4, 15, 0, 0, 'UVOW7Neec', '', 1);
 
 -- --------------------------------------------------------
 
@@ -169,14 +169,22 @@ INSERT INTO `orders` (`order_id`, `user_id`, `product_id`, `qty`, `ref_id`, `p_s
 --
 
 CREATE TABLE `orders_info` (
-  `order_id` int(10) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `order_id` int NOT NULL,
+  `user_id` int NOT NULL,
   `f_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `prod_count` int(15) DEFAULT NULL,
-  `total_amt` int(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `prod_count` int DEFAULT NULL,
+  `total_amt` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Дамп данных таблицы `orders_info`
+--
+
+INSERT INTO `orders_info` (`order_id`, `user_id`, `f_name`, `email`, `address`, `prod_count`, `total_amt`) VALUES
+(2, 18, 'Andrey Andreev', 'asd@mail.ra', '123', 1, 2300),
+(3, 22, 'Андрей Васильев', 'asd@mail.ru', '123', 2, 12900);
 
 -- --------------------------------------------------------
 
@@ -185,12 +193,12 @@ CREATE TABLE `orders_info` (
 --
 
 CREATE TABLE `order_products` (
-  `order_pro_id` int(10) NOT NULL,
-  `order_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `qty` int(15) DEFAULT NULL,
-  `amt` int(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `order_pro_id` int NOT NULL,
+  `order_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `qty` int DEFAULT NULL,
+  `amt` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `order_products`
@@ -212,7 +220,12 @@ INSERT INTO `order_products` (`order_pro_id`, `order_id`, `product_id`, `qty`, `
 (13, 7, 4, 12, 31200),
 (14, 8, 7, 2, 5800),
 (15, 9, 16, 2, 1800),
-(16, 1, 4, 1, 2600);
+(16, 1, 4, 1, 2600),
+(17, 1, 4, 1, 2600),
+(18, 2, 12, 1, 1500),
+(19, 2, 6, 1, 2300),
+(20, 3, 8, 1, 10000),
+(21, 3, 7, 1, 2900);
 
 -- --------------------------------------------------------
 
@@ -221,32 +234,32 @@ INSERT INTO `order_products` (`order_pro_id`, `order_id`, `product_id`, `qty`, `
 --
 
 CREATE TABLE `products` (
-  `product_id` int(100) NOT NULL,
-  `product_cat` int(100) NOT NULL,
-  `product_brand` int(100) NOT NULL,
+  `product_id` int NOT NULL,
+  `product_cat` int NOT NULL,
+  `product_brand` int NOT NULL,
   `product_title` varchar(255) NOT NULL,
-  `product_price` int(100) NOT NULL,
+  `product_price` int NOT NULL,
   `product_desc` mediumtext NOT NULL,
   `product_image` mediumtext NOT NULL,
   `product_keywords` mediumtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `products`
 --
 
 INSERT INTO `products` (`product_id`, `product_cat`, `product_brand`, `product_title`, `product_price`, `product_desc`, `product_image`, `product_keywords`) VALUES
-(3, 6, 8, 'Nissan Qashkai', 3000, 'серия городских компактных кроссоверов, выпускающихся японской компанией Nissan с 2006 года. Qashqai впервые был представлен как концепт на Женевском автосалоне в 2004 году, а с 2007 года стартовали продажи модели первого поколения. У модели первого поколения существовала и семиместная удлинённая версия, получившая название Qashqai+2.[⇨] Презентация модели второго поколения прошла в ноябре 2013 года, а выпускалась она вплоть до 2022 года.[⇨] В настоящий момент с 2021 года выпускается модель третьего поколения.', '1710801749_nissan.png', 'Автомобили'),
-(4, 6, 16, 'Москвич 3', 2600, 'Москвич 3 оснащен современными технологиями и мультимедийными решениями: многофункциональный руль с электроусилителем и блоком управления круиз-контролем, цифровая приборная панель с дисплеем диагональю 10,25” и мультимедийной системой с сенсорным экраном такого же размера с возможностью подключения к смартфонам по протоколам Apple CarPlay и Android Auto, а также 6 динамиками и системой камер кругового обзора. Автомобиль оснащен электрическим стояночным тормозом с функцией автоудержания.', '1710802705_2fd76338ee1d0f78244670dc63503e97.png', 'Автомобили'),
-(6, 6, 15, 'Hyndai Sonata', 2300, 'Hyundai Sonata — среднеразмерный переднеприводной седан. В соответствии с классификацией легковых автомобилей по формальному признаку (габариты), принятой в ЕС, автомобиль принадлежит к сегменту E — «Executive cars», по Euro NCAP — к «Large family car» (сегмент D)[1]. Неофициальные источники, дилеры и журналисты, специализирующиеся на данной тематике, относят автомобиль как к D-сегменту[2], так и к бизнес-классу.', '1710849233_eeb0a585378596f815e2d53974193d6d.png', 'Автомобили'),
-(7, 6, 13, 'Smart Mini', 2900, 'Smart (Swatch Mercedes Art[1]) — марка автомобилей особо малого класса, выпускаемых одноимённой компанией, принадлежащей совместному предприятию Mercedes-Benz Group и Zhejiang Geely Holding Group. Совместное предприятие MCC (Micro Compact Car AG) создано корпорациями Daimler-Benz и швейцарской часовой компанией Swatch с целью создания городского двухместного и очень экономного мини-автомобиля Smart. Micro Compact Car в сентябре 2002 изменило название на Smart GmbH.', '1710849502_smart.png', 'Автомобили'),
-(8, 7, 17, 'Личный водитель', 10000, '\r\nУслуга личного водителя предоставляет клиентам удобство и комфорт в перемещении, освобождая их от забот о вождении. Личный водитель предлагает качественное обслуживание, включая безопасность, надежность и конфиденциальность. Это позволяет клиентам сосредоточиться на своих делах или наслаждаться путешествием, в то время как профессиональный водитель обеспечивает комфортное и безопасное перемещение от места к месту. Услуга личного водителя может быть доступна по требованию или на постоянной основе и может быть настроена в соответствии с индивидуальными потребностями клиента.', '1710851105_driver.jpg', 'Услуги'),
-(9, 7, 17, 'Доставка автомобиля', 3000, 'Доставка автомобиля - это удобный и надежный способ доставки транспортного средства от одной точки до другой. Независимо от того, нужно ли передвинуть автомобиль на большие расстояния или внутри города, услуги доставки автомобиля обеспечивают безопасность и эффективность. Профессиональные перевозчики заботятся о вашем автомобиле, обеспечивая его сохранность во время транспортировки. Этот сервис особенно ценен при переездах, покупке или продаже автомобиля, а также в случае необходимости доставки автомобиля на ремонт или обслуживание. Независимо от причины, доставка автомобиля предлагает удобство и спокойствие, обеспечивая перевозку вашего транспортного средства с минимальными хлопотами.', '1710851377_car_delivery.jpg', 'Услуги'),
-(10, 7, 17, 'Детское кресло', 500, 'Аренда детского кресла - это удобное и безопасное решение для путешествий с маленькими детьми. Предоставляемые кресла соответствуют всем стандартам безопасности и удобства, обеспечивая комфорт и защиту для малышей во время поездок. Этот сервис особенно удобен для тех, кто путешествует редко или не хочет покупать дорогостоящее кресло только на короткий период времени. Аренда детского кресла позволяет родителям сэкономить деньги и пространство, а также обеспечить своим детям безопасность и комфорт во время путешествий.', '1710851503_baby_place.jpg', 'Услуги'),
-(11, 7, 17, 'Аренда машиноместа', 900, 'Аренда машиноместа - это удобное решение для хранения автомобиля в условиях, когда у вас нет собственной парковки или она недостаточна. Предоставляемые места для парковки обеспечивают безопасное и удобное место для вашего автомобиля, где он будет находиться под постоянным контролем и защитой. Этот сервис особенно полезен в городах, где парковочные места ограничены, или для тех, кто временно нуждается в дополнительном месте для хранения своего автомобиля. Аренда машиноместа позволяет вам избежать проблем с парковкой, сэкономить время и нервы, а также обеспечить сохранность вашего автомобиля в любое время.', '1710851564_car_place.jpg', 'Услуги'),
-(12, 8, 18, 'Термокружка', 1500, 'Термокружка - то практичное и удобное решение для тех, кто ценит горячие напитки в любое время и в любом месте. Термокружки сохраняют температуру вашего напитка в течение длительного времени, обеспечивая комфорт и удовольствие от его употребления в течение всего дня. Благодаря своей универсальности и портативности, термокружки идеально подходят для использования в офисе, в путешествиях, на прогулках или даже в автомобиле. При покупке термокружки стоит обратить внимание на ее объем, материал и качество изоляции, чтобы выбрать оптимальную модель, которая подходит именно вам.', '1710851779_27c76f4279a64a308d36ff8826509146ecbe6b92.png', 'Термокружка'),
-(13, 8, 18, 'Подушка для сна', 400, 'Покупка подушки для автомобиля - это отличное решение для тех, кто ценит комфорт и поддержку во время длительных поездок. Подушки для автомобиля обеспечивают правильное положение тела и уменьшают напряжение на шее, спине и пояснице во время долгих поездок, делая вашу поездку более приятной и комфортной. Благодаря разнообразию моделей и дизайнов, вы можете подобрать подушку, которая идеально подходит для вашего автомобиля и ваших индивидуальных предпочтений. При покупке подушки для автомобиля стоит обратить внимание на ее размер, материал и уровень поддержки, чтобы выбрать оптимальную модель, которая обеспечит вам комфорт во время каждой поездки.', '1710852192_catalog-easyphoto-tmp-55-jpg-4-1200x1200_0.jpg', 'Подушка'),
-(14, 8, 18, 'Термосумка', 2999, 'Покупка термосумки для автомобиля - это практичное решение для тех, кто ценит удобство и возможность сохранить свежесть и тепло продуктов во время длительных поездок. Термосумки обеспечивают надежное хранение и транспортировку продуктов, сохраняя их температуру в течение продолжительного времени, что позволяет вам наслаждаться свежими продуктами и прохладительными напитками в любое время. Благодаря разнообразию моделей и размеров, вы можете выбрать термосумку, которая идеально подходит для ваших потребностей и объема хранения. Покупка термосумки для автомобиля поможет вам сэкономить время и деньги, обеспечивая комфорт и удовольствие от каждой поездки.', '1710852440_16396.jpg', 'Сумка');
+(3, 6, 12, 'Мёд Цветочный для кондитерских изделий', 3000, 'Цветочный мёд имеет ярко-жёлтый или светло-горчичный оттенок. Аромат слабо выражен, однако различим запах сена и пыльцы. Имеет сладкий приятный вкус с небольшой горчинкой. Вызывает лёгкое першение в горле.', '1743642459_n4sshpdw5fvaj6ayw2ftuur1mcx7uaaa.png', 'Мед'),
+(4, 6, 12, 'Мёд натуральный Акациевый (жидкий)', 2600, 'По цвету различают акациевый мёд золотистый или практически прозрачный. По вкусу невероятно нежный и умеренно сладкий. Приторность и горечь отсутствуют. Особенностью является душистый аромат, который перешёл от акации. Не засахаривается.', '1743642374_2bh4sdfizfnqex2ll2ptiznhrzlpn70q.png', 'Мед'),
+(6, 6, 15, 'Мёд натуральный Боярышниковый', 2300, 'Натуральный боярышниковый мёд имеет тёмно-янтарный оттенок. На вкус горьковатый, что отражается на послевкусии. Отличается резким и насыщенным ароматом. Консистенция густая и вязкая. Процесс кристаллизации быстрый – проходит на протяжении месяца.', '1743642525_36aymx4ty98jqtbptzxetvd8adv7vkyg.png', 'Мед'),
+(7, 6, 15, 'Мёд натуральный Гречишный (жидкий)', 2900, 'Продукт обладает специфическим вкусом с приятной горчинкой. В гречишном мёде содержится множество минералов и витаминов: железо, цинк, магний, кальций, незаменимые аминокислоты и многое другое. Основные свойства:\r\n\r\nподнятие иммунитета;\r\nподдержание работы сердца;\r\nантибактериальный эффект.', '1743642258_Безымянный.png', 'Мед'),
+(8, 7, 21, 'Тара восковая', 10000, 'Воск - естественная «упаковка», которая как нельзя лучше сохраняет полезные свойства меда. На этой странице мы предлагаем купить восковую тару (шестигранную) объемом 0,32 литра. Она изготовлена из натурального пчелиного воска и абсолютно экологична!', '1743643828_upz7k3q2f6etan58bkpfjjxc68tefrkb.png', 'Подарки'),
+(9, 8, 21, 'Маточное молочко', 3000, 'Маточное молочко нативное 15 грамм — ценный продукт пчелиного производства светло-жёлтого цвета с приятным насыщенным запахом и кисловатым вкусом. Консистенция очень жирной сметаны.\r\n\r\nНатуральное вещество содержит весь спектр витаминов группы В, присутствуют также А, С, D. Это кладезь органических и жирных кислот, макро- и микроэлементов. Калорийность невысокая. Углеводы составляют всего от 8 до 20%.', '1743644309_vntwj3r0n3istv2c32uyiv6dhhumwt12.png', 'Продукты'),
+(10, 8, 21, 'Забрус', 500, 'Забрус отличается сильным антивоспалительным, антисептическим, регенеративным, болеутоляющим, успокаивающим действием на организм.\r\nПродукцию используют при ОРВИ, ОРЗ, гриппе, астме, рините, гайморите, синусите. Пчелопродукт помогает при пародонтозе, стоматите, гингивите, панкреатите, язве, дерматите. Это действенное средство при депрессивных состояниях, апатиях, перепадах настроения.\r\nЗабрус жуют в течение 10–15 минут не глотая. Лечиться этим средством можно только при отсутствии аллергии на продукты пчелиного происхождения. Желательно перед использованием вещества проконсультироваться с врачом.\r\n\r\nЗабрус жуют в течение 10–15 минут не глотая. Лечиться этим средством можно только при отсутствии аллергии на продукты пчелиного происхождения. Желательно перед использованием вещества проконсультироваться с врачом.\r\n\r\n', '1743644399_mq90qs6aya3mlhxy44m3xfn5of2qrbk1.png', 'Продукты'),
+(11, 8, 21, 'Пчелиный воск', 900, 'Пчелиный воск может похвастаться мощным антивоспалительным, бактерицидным, смягчающим, регенерирующим действием.\r\nВоск используют для лечения дерматологических заболеваний, в гинекологии — для снятия воспаления при женских болезнях. Применяют пчелопродукт и для снижения чувствительности зубов, при пародонтозе, стоматите, пародонтите. Средство полезно при бронхите, синусите, трахеите, рините.\r\n\r\nПчелопродукт можно пожевать несколько минут при заболеваниях дыхательных путей и горла. Также его используют как мазь, нанося на больные места.\r\n\r\n', '1743644475_gcl8s4xcmi29bth7bj1ydvp49uynb3di.png', 'Продукты'),
+(12, 7, 20, 'Деревянный бочонок', 1500, 'Попробуйте мед в его самой аутентичной и экологичной подаче – в деревянном бочонке, который восхищает своей природной красотой и мастерским исполнением. Бочонок объемом 0,3 кг имитирует традиционный туесок, создавая неповторимую атмосферу уюта и натуральности.\r\n\r\nИзготовленный из высококачественной древесины, он не только сохраняет свежесть меда, но и подчеркивает его природную ценность. Такой бочонок станет не просто упаковкой, а стильным элементом декора или запоминающимся подарком для ценителей всего натурального.\r\n\r\nНаполните свой дом теплотой природных традиций или удивите близких необычным презентом, который сочетает в себе полезный продукт и элегантное оформление. Деревянный бочонок с медом – это идеальный выбор для тех, кто ценит качество и уникальность!', '1743644236_3lfgdb71ehurq5ble8a5dqh6xq5fywjc.png', 'Подарки'),
+(13, 7, 20, 'Набор «Ассорти № 3 Цветочные узоры»', 400, 'Откройте для себя богатство вкусов с набором медов «Ассорти № 3 Цветочные узоры». В этом изысканном комплекте собраны три разнообразных сорта натурального цветочного меда, каждый из которых создан пчелами из нектара различных цветов. Насладитесь мягким и деликатным вкусом акациевого меда, насыщенностью классического цветочного и свежестью лугового меда.\r\n\r\nКаждая баночка оформлена в элегантном стиле с элементами цветочных узоров, что делает набор не только вкусным, но и стильным подарком. «Ассорти № 3 Цветочные узоры» – это идеальный выбор для тех, кто ценит качество, природную пользу и эстетику. Порадуйте себя или близких этим уникальным набором, который подарит настоящее удовольствие от каждого глотка!', '1743644129_6fgrb84y1dnnqk3g4a14w4u7tldqro6q.png', 'Подарки'),
+(14, 7, 20, 'Набор «Ассорти Цветочные узоры»', 2999, 'Попробуйте гармонию природы с нашим набором медов «Ассорти Цветочные узоры». В комплекте собраны три уникальных сорта натурального цветочного меда, каждый из которых раскрывает особенный вкус и аромат. Легкий и нежный акациевый мед, насыщенный цветочный и тонкий луговой – идеальное сочетание для истинных гурманов.\r\n\r\nКаждая баночка оформлена в элегантном дизайне с элементами цветочных узоров, что делает набор не только вкусным, но и прекрасным подарком для ваших близких. Насладитесь разнообразием оттенков меда или порадуйте своих друзей и близких этой уникальной коллекцией!', '1743642704_eys37mm5bluilibhra2q06jiue7uiix4.png', 'Подарки');
 
 -- --------------------------------------------------------
 
@@ -255,7 +268,7 @@ INSERT INTO `products` (`product_id`, `product_cat`, `product_brand`, `product_t
 --
 
 CREATE TABLE `user_info` (
-  `user_id` int(10) NOT NULL,
+  `user_id` int NOT NULL,
   `first_name` varchar(100) NOT NULL,
   `last_name` varchar(100) NOT NULL,
   `email` varchar(300) NOT NULL,
@@ -263,7 +276,7 @@ CREATE TABLE `user_info` (
   `mobile` varchar(10) NOT NULL,
   `address1` varchar(300) NOT NULL,
   `address2` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `user_info`
@@ -297,7 +310,7 @@ DELIMITER ;
 --
 
 CREATE TABLE `user_info_backup` (
-  `user_id` int(10) NOT NULL,
+  `user_id` int NOT NULL,
   `first_name` varchar(100) NOT NULL,
   `last_name` varchar(100) NOT NULL,
   `email` varchar(300) NOT NULL,
@@ -305,7 +318,7 @@ CREATE TABLE `user_info_backup` (
   `mobile` varchar(10) NOT NULL,
   `address1` varchar(300) NOT NULL,
   `address2` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `user_info_backup`
@@ -410,73 +423,73 @@ ALTER TABLE `user_info_backup`
 -- AUTO_INCREMENT для таблицы `admin_info`
 --
 ALTER TABLE `admin_info`
-  MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `admin_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `brand_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `brand_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT для таблицы `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT для таблицы `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `cat_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `cat_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT для таблицы `email_info`
 --
 ALTER TABLE `email_info`
-  MODIFY `email_id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `email_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `orders_info`
 --
 ALTER TABLE `orders_info`
-  MODIFY `order_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT для таблицы `order_products`
 --
 ALTER TABLE `order_products`
-  MODIFY `order_pro_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `order_pro_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `product_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT для таблицы `user_info`
 --
 ALTER TABLE `user_info`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT для таблицы `user_info_backup`
 --
 ALTER TABLE `user_info_backup`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
