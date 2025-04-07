@@ -22,7 +22,7 @@ include "topheader.php";
               </div>
               <div class="card-body">
                 <div class="col-md-12">
-                  <div class="row">
+                  <div class="row justify-content-start mb-4">
                     <a href="index.php?page=adduser" class="btn btn-primary btn-sm float-right ">Добавить нового</a>
                   </div>
                 </div>

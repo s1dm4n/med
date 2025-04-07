@@ -25,8 +25,9 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Raleway", sans-serif;
+  font-family: "Geologica", sans-serif;
 }
+
 
 /*--------------------------------------------------------------
 # Preloader
@@ -1637,11 +1638,23 @@ a.nav-item:hover, .nav-item.active {
     background-color: #fff;
     color: #5d5d5d;
 }
-main#view-panel{
-  margin-left: 250px; 
-  width:calc(100% - 250px);
-  margin-top: 3.5rem;
-  padding: .5em
+/* Основной контент */
+#view-panel {
+  background: var(--gray-bg);
+  padding: 30px;
+  margin-left: 250px;
+  margin-top: 70px; /* Добавляем отступ сверху */
+  width: calc(100% - 250px);
+  min-height: calc(100vh - 70px); /* Корректируем минимальную высоту */
+}
+
+/* Адаптивность */
+@media (max-width: 991px) {
+  #view-panel {
+      margin-left: 0;
+      width: 100%;
+      margin-top: 60px; /* Уменьшаем отступ для мобильных устройств */
+  }
 }
 .toast{
   display: none;

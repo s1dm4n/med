@@ -77,6 +77,19 @@ h1,h2,h3,h4,h5,.one,.two,.three,.four,.five{
 .section-title{
 	font-size: 46px;
 	margin-bottom: 30px;
+	position: relative;
+	padding-bottom: 20px;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #f59d2f;
 }
 .slider_nav {
 	margin-bottom: 30px;
@@ -399,6 +412,7 @@ footer nav ul{
 footer nav ul li a{
 	color: var(--text);
 	text-decoration: none;
+	transition: all 0.2s;
 }
 footer nav ul li{
 	margin-top: 14px;
@@ -551,4 +565,103 @@ iframe {
 
 .page .title {
 	font-size: 32px;
+}
+
+/* Общие стили для страниц контента */
+.content-page {
+    padding: 60px 0;
+    color: #2c2c2c;
+}
+
+/* Заголовки */
+.section-title {
+    margin-bottom: 30px;
+    font-size: 38px;
+    color: #2c2c2c;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Изображения */
+.img-text {
+    margin: 30px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.img-text img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.img-text:hover img {
+    transform: scale(1.02);
+}
+
+/* Текстовые блоки */
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #2c2c2c;
+    margin-bottom: 25px;
+}
+
+/* Выделенные блоки */
+.highlight {
+    background: #fff7e6;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 20px 0;
+    box-shadow: 0 2px 10px rgba(245, 157, 47, 0.1);
+    border-left: 4px solid #f59d2f;
+}
+
+.highlight h3 {
+    color: #f59d2f;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Списки */
+.content-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.content-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.content-list li:before {
+    content: "•";
+    color: #f59d2f;
+    position: absolute;
+    left: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 32px;
+    }
+    
+    p {
+        font-size: 16px;
+    }
+    
+    .highlight {
+        padding: 15px;
+    }
+}
+
+.first_screen_wrap.white p {
+	color: #fff;
 }

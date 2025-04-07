@@ -99,55 +99,49 @@ if(isset($_POST["getProduct"])){
 
 
 if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isset($_POST["search"])){
-	if(isset($_POST["get_seleted_Category"])){
-		$id = $_POST["cat_id"];
-		$sql = "SELECT * FROM products,categories WHERE product_cat = '$id' AND product_cat=cat_id";
+    if(isset($_POST["get_seleted_Category"])){
+        $id = $_POST["cat_id"];
         
-	}else if(isset($_POST["selectBrand"])){
-		$id = $_POST["brand_id"];
-		$sql = "SELECT * FROM products,categories WHERE product_brand = '$id' AND product_cat=cat_id";
-	}else {
+        // Получаем название категории
+        $cat_query = "SELECT cat_title FROM categories WHERE cat_id = '$id'";
+        $cat_result = mysqli_query($con, $cat_query);
+        $cat_row = mysqli_fetch_array($cat_result);
+        $category_name = $cat_row['cat_title'];
         
-		$keyword = $_POST["keyword"];
-        header('Location:store.php');
-		$sql = "SELECT * FROM products,categories WHERE product_cat=cat_id AND product_keywords LIKE '%$keyword%'";
-       
-	}
-	
-	$run_query = mysqli_query($con,$sql);
-	while($row=mysqli_fetch_array($run_query)){
-			$pro_id    = $row['product_id'];
-			$pro_cat   = $row['product_cat'];
-			$pro_brand = $row['product_brand'];
-			$pro_title = $row['product_title'];
-			$pro_price = $row['product_price'];
-			$pro_image = $row['product_image'];
-            $cat_name = $row["cat_title"];
-			echo "
-					
-                        
-                        <div class='col-md-4 col-xs-6'>
-								<a href='product.php?p=$pro_id'><div class='product'>
-									<div class='product-img'>
-										<img  src='product_images/$pro_image'  style='max-height: 170px;' alt=''>
-										<div class='product-label'>
-											<span class='sale'></span>
-											<span class='new'></span>
-										</div>
-									</div></a>
-									<div class='product-body'>
-										<p class='product-category'>$cat_name</p>
-										<h3 class='product-name header-cart-item-name'><a href='product.php?p=$pro_id'>$pro_title</a></h3>
-										<h4 class='product-price header-cart-item-info'>$pro_priceheck</h4>
-									</div>
-									<div class='add-to-cart'>
-										<button pid='$pro_id' id='product' href='#' tabindex='0' class='add-to-cart-btn'><i class='fa fa-shopping-cart'></i> add to cart</button>
-									</div>
-								</div>
-							</div>
-			";
-		}
-	}
+        // Выводим заголовок категории
+        echo "<h2 class='section-title text-center mb-4'>$category_name</h2>";
+        echo '<div class="row gy-4">';
+        
+        // Получаем товары категории
+        $sql = "SELECT * FROM products,categories WHERE product_cat = '$id' AND product_cat=cat_id";
+        $run_query = mysqli_query($con,$sql);
+        
+        while($row=mysqli_fetch_array($run_query)){
+            $pro_id    = $row['product_id'];
+            $pro_title = $row['product_title'];
+            $pro_price = $row['product_price'];
+            $pro_image = $row['product_image'];
+            
+            echo "
+                <div class='col-md-4'>
+                    <a href='product.php?p=$pro_id'>
+                        <div class='product_item'>
+                            <img src='product_images/$pro_image' alt=''>
+                            <h5 class='mt-3'>$pro_title</h5>
+                            <div class='text'>$pro_price ₽</div>
+                            <div class='add-to-cart mt-3'>
+                                <button pid='$pro_id' id='product' class='add-to-cart-btn block2-btn-towishlist btn' href='#'>
+                                    <i class='fa fa-shopping-cart'></i>В корзину
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            ";
+        }
+        echo '</div>';
+    }
+}
 	
 
 
