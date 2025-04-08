@@ -92,7 +92,7 @@ if(mysqli_num_rows($run_query) > 0) {
 					<ul>
 						<li><a href="/information/faq.php">Вопросы и ответы</a></li>
 						<li><a  href="/information/about.php">О нас</a></li>
-						<li><a  href="/information/blog.php">Блог</a></li>
+						<li><a  href="/information/blog.php">Полезное</a></li>
 						<li><a href="/information/contacts.php">Контакты</a></li>
 					</ul>
 				</nav>
